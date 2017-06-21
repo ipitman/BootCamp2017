@@ -71,7 +71,7 @@ class ComplexNumber(object):
         imag = self.imag*other.real + other.imag*self.real
         return ComplexNumber(real, imag)
 
-    def __div__(self, other):
+    def __truediv__(self, other):
         if other.real == 0 and other.imag == 0:
             raise ValueError("Cannot divide by zero")
         bottom = (other.conjugate()*other*1.).real
@@ -86,3 +86,5 @@ class ComplexNumber(object):
                                                                 abs(self.imag))
 
 # Problem 5: Write code for the Set game here
+with open("./hands/hand1.txt", "r") as f:
+    collection = f.read().splitlines()
