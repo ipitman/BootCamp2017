@@ -98,3 +98,21 @@ def test_str(set_up_complex_nums):
 
     
 # Problem 4: Write test cases for the Set game.
+
+def test_set_counter():
+    with pytest.raises(Exception) as excinfo:
+        soln.set_counter("./hands/hand4.txt")
+    assert excinfo.typename == 'ValueError'
+    assert excinfo.value.args[0] == "Duplicate cards are not allowed."
+    with pytest.raises(Exception) as excinfo:
+        soln.set_counter("./hands/hand2.txt")
+    assert excinfo.typename == 'ValueError'
+    assert excinfo.value.args[0] == "File must contain exactly 12 cards."
+    with pytest.raises(Exception) as excinfo:
+        soln.set_counter("./hands/hand3.txt")
+    assert excinfo.typename == 'ValueError'
+    assert excinfo.value.args[0] == "Every line must consist of exactly four digits, each of which is either 0, 1, or 2."
+    with pytest.raises(Exception) as excinfo:
+        soln.set_counter("potato.txt")
+    assert excinfo.typename == 'FileNotFoundError'
+    assert excinfo.value.args[0] == "Please enter a valid filename."

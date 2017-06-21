@@ -86,5 +86,48 @@ class ComplexNumber(object):
                                                                 abs(self.imag))
 
 # Problem 5: Write code for the Set game here
-with open("./hands/hand1.txt", "r") as f:
-    collection = f.read().splitlines()
+
+def set_counter(filepath):
+
+    """
+    Note that this function can be modified to return the sets themselves, rather than simply the number of sets.
+    """
+    
+    data = []
+
+    try:
+        with open(filepath, "r") as f:
+            for line in f:
+                line = line.strip('\n')
+                if len(line) != 4 or line.strip('012'):
+                    raise ValueError("Every line must consist of exactly four digits, each of which is either 0, 1, or 2.")
+                if line in data:
+                    raise ValueError("Duplicate cards are not allowed.")
+                data.append(line)
+    except FileNotFoundError:
+        raise FileNotFoundError("Please enter a valid filename.")
+
+    if len(data) != 12:
+        raise ValueError("File must contain exactly 12 cards.")
+
+    collection = list(enumerate(data))
+
+    sets = []
+    
+    for (i, card1) in collection:
+        for (j, card2) in collection[i + 1:]:
+            for (k, card3) in collection[j + 1:]:
+                for l in range(4):
+                    if (int(card1[l]) + int(card2[l]) + int(card3[l])) % 3:
+                        break
+                else:
+                    sets.append((card1, card2, card3))
+
+    return len(sets)
+
+
+
+
+
+
+
