@@ -116,3 +116,4 @@ def test_set_counter():
         soln.set_counter("potato.txt")
     assert excinfo.typename == 'FileNotFoundError'
     assert excinfo.value.args[0] == "Please enter a valid filename."
+    assert soln.set_counter("./hands/hand1.txt") == 3

@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\begin{document}
+
+\section{Problem 3.6:}
+
+\begin{proof}
+$B_i \cap B_j = \emptyset$ $\forall i \ne j$, so $(A \cap B_i) \cap (A \cap B_j) = \emptyset$ $\forall i \ne j$, i.e. $\{A \cap B_i\}_{i \in I}$ is a collection of pairwise-disjoint events. Since it is indexed by a finite or countable set $I$, then, we have that:
+\begin{align*}
+\sum\limits_{i \in I} P(A \cap B_i) &= P(\bigcup\limits_{i \in I} A \cap B_i) \\
+&= P(A \cap (\bigcup\limits_{i \in I} B_i)) &&\text{by the distributive property of $\cap$} \\
+&= P(A \cap \Omega) &&\text{by assumption} \\
+&= P(A) &&\text{since $A \subseteq \Omega$}
+\end{align*}
+\end{proof}
+
+\end{document}
