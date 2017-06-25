@@ -1,20 +1,20 @@
 \documentclass{article}
-\usepackage{amsmath, amsthm, amssymb}
+\usepackage{amsmath, amsthm, amsfonts, mathtools}
 \begin{document}
 
-\section{Problem 3.6:}
+\section*{Problem 3.6:}
 
 \begin{proof}
-$B_i \cap B_j = \emptyset$ $\forall i \ne j$, so $(A \cap B_i) \cap (A \cap B_j) = \emptyset$ $\forall i \ne j$, i.e. $\{A \cap B_i\}_{i \in I}$ is a collection of pairwise-disjoint events. Since it is indexed by a finite or countable set $I$, then, we have that:
+$B_i \cap B_j = \emptyset$ $\forall$ $i \ne j$, so $(A \cap B_i) \cap (A \cap B_j) = \emptyset$ $\forall$ $i \ne j$, i.e. $\{A \cap B_i\}_{i \in I}$ is a collection of pairwise-disjoint events. Since it is indexed by a finite or countable set $I$, then, we have that:
 \begin{align*}
-\sum\limits_{i \in I} P(A \cap B_i) &= P(\bigcup\limits_{i \in I} A \cap B_i) \\
-&= P(A \cap (\bigcup\limits_{i \in I} B_i)) &&\text{by the distributive property of $\cap$} \\
+\sum\limits_{i \in I} P(A \cap B_i) &= P\big(\bigcup\limits_{i \in I} A \cap B_i \big) \\
+&= P\big(A \cap (\bigcup\limits_{i \in I} B_i) \big) &&\text{by the distributive property of $\cap$} \\
 &= P(A \cap \Omega) &&\text{by assumption} \\
 &= P(A) &&\text{since $A \subseteq \Omega$}
 \end{align*}
 \end{proof}
 
-\section{Problem 3.8:}
+\section*{Problem 3.8:}
 
 \begin{proof}
 \begin{align*}
@@ -25,9 +25,17 @@ P(\bigcup\limits_{k = 1}^n E_k) &= 1 - P((\bigcup\limits_{k = 1}^n E_k)^C) \\
 \end{align*}
 \end{proof}
 
-\section{Problem 3.11:}
-Who knows
-\section{Problem 3.12:}
+\section*{Problem 3.11:}
+\begin{proof}
+Let $C$ denote "criminal", $NC$ denote "not criminal", and $+$ denote "tested positive". Then, we know that $P(+ | NC) = \frac{1}{3,000,000}$, $P(+ | C) = 1$ (by assumption), and that $P(C) = 1 - P(NC) = \frac{1}{250,000,000}$. So, we have that:
+\begin{align*}
+P(NC | +) &= \frac{P(+ | NC)P(NC)}{P(+ | NC)P(NC) + P(+ | C)P(C)} \\
+&= \frac{\frac{1}{3,000,000} \cdot \frac{249,999,999}{250,000,000}}{\frac{1}{3,000,000} \cdot \frac{249,999,999}{250,000,000} + 1 \cdot \frac{1}{250,000,000}} \\
+&\approx 0.98814 \\
+\end{align*}
+So, $P(C | +) = 1 - P(NC | +) \approx 0.01186$. This is the probability that the suspect is the criminal, given that they tested positive.
+\end{proof}
+\section*{Problem 3.12:}
 \begin{proof}
 Consider the mutually exclusive and collectively exhaustive set of events $\{C_1, C_2, C_3\}$, where $C_n$ corresponds to the car being behind the $n$th door.
 Also, consider the set of events $\{D_1, D_2, D_3\}$ where $D_n$ corresponds to Monty Hall opening the $n$th door.
@@ -52,4 +60,265 @@ Note that we may replace $D_3$ with $D_2$ in the above equations and arrive at t
 $$P(C_2 | D_3) = P(C_2 | D_2) = \frac{2}{3} > \frac{1}{3} = P(C_1 | D_2) = P(C_1 | D_3)$$
 If there were 10 doors and Monty opened 8 with goats after the contestant's first choice, the contestant would have a $\frac{9}{10}$ chance of winning by switching, and a $\frac{1}{10}$ chance of winning by sticking with the original choice. This result can be found by a trivial generalization of the above proof (it is useful in this case to think of events $D_n$ as Monty Hall {\it not} opening the $n$th door).
 \end{proof}
+\section*{Problem 3.16:}
+\begin{proof}
+\begin{align*}
+Var[X] &= E[(X - \mu)^2] \\
+&= E[X^2 - 2X\mu + \mu^2] \\
+&= E[X^2] - 2\mu E[X] + \mu^2 \\
+&= E[X^2] - 2E[X]E[X] + E[X]^2 \\
+&= E[X^2] - E[X]^2 \\
+&= E[X^2] - \mu^2 \\
+\end{align*}
+\end{proof}
+\section*{Problem 3.33:}
+\begin{proof}
+Recall that we define $B \coloneqq \sum_{i = 1}^n B_i$, where $B_1, ... , B_n$ are all independent, Bernoulli distributed variables with parameter p. So, we know that $E[B_i] \coloneqq \mu = p$, and $Var[B_i] \coloneqq \sigma^2 = p(1 - p)$. By the weak law of large numbers, we know that, for every $\epsilon > 0$:
+\begin{align*}
+P\bigg(\left\lvert\frac{\sum_{i = 1}^n B_i}{n} - \mu \right\rvert &\geq \epsilon \bigg) \leq \frac{\sigma^2}{n\epsilon^2} \\
+P\bigg(\left\lvert\frac{B}{n} - p \right\rvert &\geq \epsilon \bigg) \leq \frac{p(1 - p)}{n\epsilon^2} &\text{by substitution}\\
+\end{align*}
+\end{proof}
+\section*{Problem 3.36:}
+\begin{proof}
+For each Bernoulli trial, $E[B_i] \coloneqq \mu = p = 0.801$ (by assumption) and $Var[B_i] \coloneqq \sigma^2 = p(1 - p) = 0.159399$. Define the following:
+$$
+S_{6242} \coloneqq \sum_{i = 1}^{6242} B_i \qquad
+y \coloneqq \frac{5500 - 6242\mu}{\sqrt{6242}\sigma} = 15.8563
+$$
+Since 6242 is large, we know that:
+\begin{align*}
+P(S_{6242} \geq 5500) &\approx 1 - \frac{1}{\sqrt{2\pi}} \int_{- \infty}^y e^{- x^2 / 2} dx \\
+&\approx 0 \\
+\end{align*}
+This is the probability that the number of students enrolling will exceed 5500, provided the university admits 6242 students.
+\end{proof}
+
+\section*{Problem 2:}
+
+\subsection*{Part a.}
+\begin{proof}
+Consider a sample space $\Omega \coloneqq \{1, 2, 3, 4, 5, 6, 7, 8\}$. Say $P(\omega) = 1 / |\Omega|$ $\forall$ $\omega \in \Omega$. Then, define the following events:
+$$
+A \coloneqq \{1, 2, 3, 4\} \qquad B \coloneqq \{3, 4, 5, 6\} \qquad C \coloneqq \{3, 4, 7, 8\}
+$$
+Then, the following equations hold:
+\begin{align*}
+P(A \cap B) &= P(A)P(B) = \frac{1}{4} \\
+P(A \cap C) &= P(A)P(C) = \frac{1}{4} \\
+P(B \cap C) &= P(B)P(C) = \frac{1}{4} \\
+P(A \cap B \cap C) = \frac{1}{4} &\ne \frac{1}{8} = P(A)P(B)P(C) &&\text{as required} \\
+\end{align*}
+\end{proof}
+
+\subsection*{Part b.}
+\begin{proof}
+Consider a sample space $\Omega \coloneqq \{1, 2, 3, 4, 5, 6, 7, 8\}$. Say $P(\omega) = 1 / |\Omega|$ $\forall$ $\omega \in \Omega$. Then, define the following events:
+$$
+A \coloneqq \{1, 2, 3, 4\} \qquad B \coloneqq \{3, 4, 5, 6\} \qquad C \coloneqq \{2, 4, 7, 8\}
+$$
+Then, the following equations hold:
+\begin{align*}
+P(A \cap B) &= P(A)P(B) = \frac{1}{4} \\
+P(A \cap C) &= P(A)P(C) = \frac{1}{4} \\
+P(A \cap B \cap C) &= P(A)P(B)P(C) = \frac{1}{8} \\
+P(B \cap C) = \frac{1}{8} &\ne \frac{1}{4} = P(B)P(C) &&\text{as required} \\
+\end{align*}
+\end{proof}
+
+\section*{Problem 3:}
+\begin{proof}
+Consider the state space $\Omega \coloneqq \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$. We define the probability measure $P$ s.t. $P(\omega) = log_{10}(1 + \frac{1}{\omega})$ $\forall$ $\omega \in \Omega$. Then, we have that:
+\begin{align*}
+P(\Omega) &= \sum\limits_{i = 1}^9 P(i) \\
+&= \sum\limits_{i = 1}^9 log_{10}\bigg(1 + \frac{1}{i}\bigg) \\
+&= log_{10}\bigg(\frac{2}{1}\bigg) + log_{10}\bigg(\frac{3}{2}\bigg) + log_{10}\bigg(\frac{4}{3}\bigg) + ... + log_{10}\bigg(\frac{9}{8}\bigg) + log_{10}\bigg(\frac{10}{9}\bigg) \\
+&= log_{10}\bigg(\frac{2}{1} \cdot \frac{3}{2} \cdot \frac{4}{3} \cdot ... \cdot \frac{9}{8} \cdot \frac{10}{9}\bigg) \\
+&= log_{10}(10) \\
+&= 1
+\end{align*}
+Thus, Benford's Law is, in fact, a well-defined discrete probability distribution, since we may impose the additivity axiom.
+\end{proof}
+
+\section*{Problem 4:}
+
+\subsection*{Part a.}
+\begin{proof}
+Consider the state space $\Omega \coloneqq \{T, HT, HHT, HHHT, HHHHT, ...\}$. Consider an outcome $H ... HT$ with $n \geq 0$ $H$s. Then we define the random variable $X$ s.t. $X(H ... HT) = 2^{(n + 1)}$. Also, since the coin is fair, we know that $P(H ... HT) = 1 / 2^{(n + 1)}$. It follows that:
+\begin{align*}
+E[X] &= \frac{1}{2} \cdot 2 + \frac{1}{4} \cdot 4 + \frac{1}{8} \cdot 8 + ... \\
+&= 1 + 1 + 1 + ... \\
+&= + \infty \\
+\end{align*}
+If we substitute $ln(X)$ for $X$, we get that:
+\begin{align*}
+E[ln(X)] &= \frac{1}{2} \cdot ln(2) + \frac{1}{4} \cdot ln(4) + \frac{1}{8} \cdot ln(8) + ... \\
+&= ln(2^{(1/2)}) + ln(4^{(1/4)}) + ln(8^{(1/8)}) + ... \\
+&= ln(2^{(1/2)} \cdot 4^{(1/4)} \cdot 8^{(1/8)} \cdot ...) \\
+&= ln(4) \\
+&\approx 1.3863 \\
+\end{align*}
+\end{proof}
+
+\section*{Problem 5:}
+
+Consider one of the investors. If she invests in one dollar of her own currency, then her expected wealth is clearly one dollar. However, if she invests in one dollar of foreign currency, then her expected wealth is $\frac{1}{2} \cdot \frac{1}{1.25} + \frac{1}{2} \cdot 1.25 = 1.025$. So, she should invest in foreign currency. This logic applies for both investors.
+
+\section*{Problem 6:}
+
+\subsection*{Part a.}
+\begin{proof}
+Let $U$ be uniform on $[0, 1]$. That is, the density of $U$ is $f(u) = 1$ on the unit interval and 0 everywhere else. Let $X = 1 / \sqrt{U}$. Then we have:
+\begin{align*}
+E(X) &= \int_0^1 \frac{1}{\sqrt{u}} du = 2 \\
+E(X^2) &= \int_0^1 \frac{1}{u} du = +\infty
+\end{align*}
+\end{proof}
+
+\subsection*{Part b.}
+\begin{proof}
+Consider the CDF of X as defined in part a for $x \geq 1$:
+$$
+F_X(x) = P(X < x) = P\bigg(\frac{1}{\sqrt{U}} < x\bigg) = P\bigg(U > \frac{1}{x^2}\bigg) = 1 - \frac{1}{x^2}
+$$
+Using the CDF, we know that the median of X is $\sqrt{2}$. So, we may define a random variable Y to be some constant $c \in [\sqrt{2}, 2]$, say 1.5, with probability 1. Then $P(Y > X) = \frac{5}{9} > \frac{1}{2}$, but $E[Y] = 1.5 < 2 = E[X]$.
+\end{proof}
+
+\subsection*{Part c.}
+
+Consider random variables $X = Y = Z = N(0, 1)$. Then $P(X > Y)P(Y > Z)P(X > Z) = \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{8} > 0$ by the symmetry of the normal distribution and $E(X) = E(Y) = E(Z) = 0$
+
+\section*{Problem 7:}
+
+\subsection*{Part a.}
+
+\begin{proof}
+Consider the CDF of Y:
+\begin{align*}
+P(Y \leq  y) &= P(X \leq y)P(Z = 1) + P(X \geq - y)P(Z = -1) \\
+&= P(X \leq y)P(Z = 1) + P(X \leq y)P(Z = -1) &&\text{by the symmetry of the normal distribution}\\
+&= P(X \leq y) \cdot \frac{1}{2} + P(X \leq y) \cdot \frac{1}{2} \\
+&= P(X \leq y)
+\end{align*}
+So, since $X \sim N(0, 1)$, we must have $Y \sim N(0, 1)$.
+\end{proof}
+
+\subsection*{Part b.}
+
+\begin{proof}
+Since Z is either $-1$ or $1$, we have that:
+$$|Y| = |XZ| = |X|$$
+So, clearly $P(|X| = |Y|) = 1$
+\end{proof}
+
+\subsection*{Part c.}
+
+\begin{proof}
+Since $Y \sim N(0, 1)$, we have that:
+$$P(-1 \leq Y \leq 1) \approx 0.6827$$
+However, given $X > 1$, we have that:
+$$P(-1 \leq Y \leq 1 \mid X > 1) = 0$$
+So, Y is dependent on X.
+\end{proof}
+
+\subsection*{Part d.}
+\begin{proof}
+\begin{align*}
+Cov[X, Y] &= E[XY] - E[X]E[Y] \\
+&= E[XY] &&\text{since $E[X] = E[Y] = 0$} \\
+&= E[X^2Z] \\
+&= E[X^2]E[Z] &&\text{since X and Z are independent} \\
+&= 0 &&\text{since $E[Z] = 0$}\\
+\end{align*}
+\end{proof}
+
+\subsection*{Part e.}
+
+This assertion is false, as demonstrated by the examples $X$ and $Y$ as defined above.
+
+\section*{Problem 8:}
+\begin{proof}
+Consider the CDF of M:
+\begin{align*}
+F_M(x) &= P(M \leq x) \\
+&= P((X_1 \leq x) \cap (X_2 \leq x) \cap ... \cap (X_n \leq x)) &&\text{by maximality of M} \\ 
+&= P(X_1 \leq x) \cdot P(X_2 \leq x) \cdot ... \cdot P(X_n \leq x) &&\text{since the $X_i$s are i.i.d.} \\
+&= x \cdot x \cdot ... \cdot x &&\text{since the $X_i$s are uniform} \\
+&= x^n \\
+\end{align*}
+Taking the derivative of the CDF, we get the PDF:
+$$f_M(x) = nx^{(n - 1)}$$
+Finally, we have that:
+\begin{align*}
+E[X] &= \int_0^1 xf_M(x) dx \\
+&= \int_0^1  nx^n dx \\
+&= \frac{n}{n + 1} \\
+\end{align*}
+Consider the CDF of m:
+\begin{align*}
+F_m(x) &= P(m \leq x) \\
+&= 1 - P(m \geq x) \\
+&= 1 - P((X_1 \geq x) \cap (X_2 \geq x) \cap ... \cap (X_n \geq x)) &&\text{by minimality of m} \\
+&= 1 - P(X_1 \geq x) \cdot P(X_2 \geq x) \cdot ... \cdot P(X_n \geq x) &&\text{since the $X_i$s are i.i.d.} \\
+&= 1 - (1 - x) \cdot (1 - x) \cdot ... \cdot (1 - x) &&\text{since the $X_i$s are uniform} \\
+&= 1 - (1 - x)^n \\
+\end{align*}
+Taking the derivative of the CDF, we get the PDF:
+$$f_M(x) = n(1 - x)^{(n - 1)}$$
+Finally, we have that:
+\begin{align*}
+E[X] &= \int_0^1 xf_m(x) dx \\
+&= \int_0^1  nx(1 - x)^{(n - 1)} dx \\
+&= \frac{1}{n + 1} \\
+\end{align*}
+
+\end{proof}
+
+\section*{Problem 9:}
+
+\subsection*{Part a.}
+
+\begin{proof}
+We can consider the model as a sequence of $n$ i.i.d. Bernoulli trials, labeled $\{X_1, X_2, ... X_n\}$. We know that $n = 1000$, $\mu = 0.5$, and $\sigma = 0.5$. Define the following:
+
+$$
+S_{n} \coloneqq \sum_{i = 1}^{n} X_i \qquad
+y_1 \coloneqq \frac{490 - n\mu}{\sqrt{n}\sigma} \qquad
+y_2 \coloneqq \frac{510 - n\mu}{\sqrt{n}\sigma}
+$$
+
+Then, plugging in the appropriate values of $n$, $\mu$, and $\sigma$, we may use the CLT:
+
+\begin{align*}
+P(490 \leq S_{1000} \leq 510) &\approx \frac{1}{\sqrt{2\pi}} \int_{y_1}^{y_2} e^{- x^2 / 2} dx \\
+&\approx 0.47291 \\
+\end{align*}
+\end{proof}
+
+\subsection*{Part b.}
+
+\begin{proof}
+Using the CLT, we may solve for y:
+\begin{align*}
+0.99 &= \frac{1}{\sqrt{2\pi}} \int_{-y}^{y} e^{- x^2 / 2} dx \\
+y &\approx 2.57583
+\end{align*}
+We know that $y = \frac{S_n - n\mu}{\sqrt{n}\sigma}$. Also, we know that $\frac{S_n}{n} - \mu = 0.01$. So, we have that:
+\begin{align*}
+y &= \frac{0.01\sqrt{n}}{\sigma} \\
+n &\approx 16587 \\
+\end{align*}
+\end{proof}
+
+\section*{Problem 10:}
+
+Suppose $E[e^{\theta X}] = 1$. Since $ln(x)$ concave, by Jensen's Inequality we have that:
+\begin{align*}
+E[ln(e^{\theta X})] &\leq ln(E[e^{\theta X}]) \\
+E[\theta X] &\leq ln(1) \\
+\theta E[X] &\leq 0 &&\text{since $\theta$ constant} \\
+\theta &\geq 0 &&\text{since $E[X] < 0$} \\
+\theta &> 0 &&\text{since $\theta \ne 0$} \\
+\end{align*}
+
 \end{document}
