@@ -144,20 +144,10 @@ Thus, Benford's Law is, in fact, a well-defined discrete probability distributio
 
 \subsection*{Part a.}
 \begin{proof}
-Consider the state space $\Omega \coloneqq \{T, HT, HHT, HHHT, HHHHT, ...\}$. Consider an outcome $H ... HT$ with $n \geq 0$ $H$s. Then we define the random variable $X$ s.t. $X(H ... HT) = 2^{(n + 1)}$. Also, since the coin is fair, we know that $P(H ... HT) = 1 / 2^{(n + 1)}$. It follows that:
-\begin{align*}
-E[X] &= \frac{1}{2} \cdot 2 + \frac{1}{4} \cdot 4 + \frac{1}{8} \cdot 8 + ... \\
-&= 1 + 1 + 1 + ... \\
-&= + \infty \\
-\end{align*}
-If we substitute $ln(X)$ for $X$, we get that:
-\begin{align*}
-E[ln(X)] &= \frac{1}{2} \cdot ln(2) + \frac{1}{4} \cdot ln(4) + \frac{1}{8} \cdot ln(8) + ... \\
-&= ln(2^{(1/2)}) + ln(4^{(1/4)}) + ln(8^{(1/8)}) + ... \\
-&= ln(2^{(1/2)} \cdot 4^{(1/4)} \cdot 8^{(1/8)} \cdot ...) \\
-&= ln(4) \\
-&\approx 1.3863 \\
-\end{align*}
+Let $X$ be the number of tosses till the first tail. Then $P(X = n) = 1/2^n$. Therefore $E(2^X) = \sum_{n=1}^\infty 2^n (1/2^n) = \infty$ \\
+\\
+Write $ln(X) = ln(2)\log_2(X)$. Then
+$E[\log_2(X)] = \sum_{n=1}^\infty n(1/2^n) = 2$ and hence $E[ln(X)] = ln(2)E[\log_2(X)] = 1.3863$.
 \end{proof}
 
 \section*{Problem 5:}
@@ -186,7 +176,7 @@ Using the CDF, we know that the median of X is $\sqrt{2}$. So, we may define a r
 
 \subsection*{Part c.}
 
-Consider random variables $X = Y = Z = N(0, 1)$. Then $P(X > Y)P(Y > Z)P(X > Z) = \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{8} > 0$ by the symmetry of the normal distribution and $E(X) = E(Y) = E(Z) = 0$
+Consider three random variables $X$, $Y$, and $Z$ that are all i.i.d. $N(0, 1)$. Then $P(X > Y)P(Y > Z)P(X > Z) = \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{8} > 0$ by the symmetry of the normal distribution and $E(X) = E(Y) = E(Z) = 0$
 
 \section*{Problem 7:}
 
@@ -218,7 +208,7 @@ Since $Y \sim N(0, 1)$, we have that:
 $$P(-1 \leq Y \leq 1) \approx 0.6827$$
 However, given $X > 1$, we have that:
 $$P(-1 \leq Y \leq 1 \mid X > 1) = 0$$
-So, Y is dependent on X.
+So, Y and X are independent.
 \end{proof}
 
 \subsection*{Part d.}
@@ -238,7 +228,7 @@ This assertion is false, as demonstrated by the examples $X$ and $Y$ as defined 
 
 \section*{Problem 8:}
 \begin{proof}
-Consider the CDF of M:
+Let $F_M$ be the CDF of $M$. Then $F_M(x) = 0$ for $x < 0$ and $F_M(x) = 1$ for $x > 1$.  For $0 \le x \le 1$:
 \begin{align*}
 F_M(x) &= P(M \leq x) \\
 &= P((X_1 \leq x) \cap (X_2 \leq x) \cap ... \cap (X_n \leq x)) &&\text{by maximality of M} \\ 
@@ -246,7 +236,7 @@ F_M(x) &= P(M \leq x) \\
 &= x \cdot x \cdot ... \cdot x &&\text{since the $X_i$s are uniform} \\
 &= x^n \\
 \end{align*}
-Taking the derivative of the CDF, we get the PDF:
+Taking the derivative of the CDF, we get the PDF. For $0 \le x \le 1$:
 $$f_M(x) = nx^{(n - 1)}$$
 Finally, we have that:
 \begin{align*}
@@ -254,7 +244,7 @@ E[X] &= \int_0^1 xf_M(x) dx \\
 &= \int_0^1  nx^n dx \\
 &= \frac{n}{n + 1} \\
 \end{align*}
-Consider the CDF of m:
+Consider the CDF of m. For $0 \le x \le 1$:
 \begin{align*}
 F_m(x) &= P(m \leq x) \\
 &= 1 - P(m \geq x) \\
@@ -263,7 +253,7 @@ F_m(x) &= P(m \leq x) \\
 &= 1 - (1 - x) \cdot (1 - x) \cdot ... \cdot (1 - x) &&\text{since the $X_i$s are uniform} \\
 &= 1 - (1 - x)^n \\
 \end{align*}
-Taking the derivative of the CDF, we get the PDF:
+Taking the derivative of the CDF, we get the PDF. For $0 \le x \le 1$:
 $$f_M(x) = n(1 - x)^{(n - 1)}$$
 Finally, we have that:
 \begin{align*}
