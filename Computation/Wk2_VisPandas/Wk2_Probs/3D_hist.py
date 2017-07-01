@@ -13,6 +13,7 @@ n, bin_cuts, patches = plt.hist(diseased_data['chol'], 25, weights=weights)
 
 plt.xlabel('concentration of plasma cholesterol (mg/dl)')
 plt.ylabel('frequency')
+plt.title('2D Histogram')
 
 plt.show()
 
@@ -43,5 +44,10 @@ ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='b', zsort='average')
 ax.set_xlabel('concentration of plasma cholesterol (mg/dl)')
 ax.set_ylabel('concentration of plasma triglicerides (mg/dl)')
 ax.set_zlabel('frequency')
+plt.title('3D Histogram')
+
+print('While the individuals appear to have fairly normal cholesterol levels (~200 mg/dl), they tend to have fairly high trigliceride levels (>150 mg/dl).'
+	'This could be the reason why they have some form of heart disease.'
+	'I would say that groups with high trigliceride levels have the highest risk for heart disease.')
 
 plt.show()
