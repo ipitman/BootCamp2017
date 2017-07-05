@@ -424,7 +424,7 @@ Thus, for $x \in \mathbb{F}^n$, we have that $\|x\|_2 = \sqrt{\langle x, x \rang
 $$\|Q\| = \sup_{x \ne 0} \frac{\|Qx\|_2}{\|x\|_2} = \sup_{x \ne 0} \frac{\sqrt{\langle Qx, Qx \rangle}}{\sqrt{\langle x, x \rangle}} =\sup_{x \ne 0} \frac{\sqrt{\langle x, x \rangle}}{\sqrt{\langle x, x \rangle}} = 1$$
 Note that:
 $$\|R_x\| = \sup_{A \ne 0} \frac{\|Ax\|_2}{\|A\|} =  \sup_{A \ne 0} \frac{\|Ax\|_2}{\left(\sup_{x \ne 0} \frac{\|Ax\|_2}{\|x\|_2}\right)} \leq \sup_{A \ne 0} \frac{\|Ax\|_2}{\frac{\|Ax\|_2}{\|x\|_2}} = \sup_{A \ne 0} \|x\|_2 = \|x\|_2$$
-Don't know how to prove equality.
+Consider $A = I$. Then $\frac{\|Ax\|_2}{\|A\|} = \frac{\|Ix\|_2}{\|I\|} =  \|x\|_2$. Since $\|R_x\| = \sup_{A \ne 0} \frac{\|Ax\|_2}{\|A\|}$, and $\|R_x\| \leq \|x\|_2$, we must have that $\|R_x\| = \|x\|_2$.
 \end{proof}
 
 \section*{Problem 30}
